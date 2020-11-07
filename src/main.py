@@ -29,7 +29,7 @@ class Plunger_Manager:
 
 
     def compare_ipv6(self):
-        with open("ipv6.txt", "w+") as f:
+        with open("ipv6.txt", "r+") as f:
             previous_ipv6 = f.read()
             if self.current_ipv6 != previous_ipv6:
                 f.seek(0)
