@@ -29,9 +29,8 @@ class Plunger_Manager:
 
 
     def compare_ipv6(self):
-        with open("ipv6.txt", "r+") as f:
+        with open("ipv6.txt", "w+") as f:
             previous_ipv6 = f.read()
-
             if self.current_ipv6 != previous_ipv6:
                 f.seek(0)
                 f.truncate(0)
@@ -42,8 +41,8 @@ class Plunger_Manager:
     def update_discord(self):
         load_dotenv()
         TOKEN = getenv("DISCORD_TOKEN")
-
         client = Client()
+
 
         @client.event
         async def on_ready():
@@ -53,16 +52,12 @@ class Plunger_Manager:
                     date = now.strftime("%x")
                     time = now.strftime("%X")
 
-                    print(
+                    await channel.purge(limit=1)
+                    await channel.send(
                         f"Plunger 1.20 - Hostname updated {date} @ {time}\n"
                         f"{self.current_ipv6}\n"
                         f"Port is default @ 25565 and can be omitted."
                     )
-                    # await channel.purge(limit=1)
-                    # await channel.send(
-                    #     f"{datetime.strftime("%x")}\n{self.current_ipv6}"
-                    # )
-
                     await client.close()
 
 
@@ -70,7 +65,7 @@ class Plunger_Manager:
 
 
 def main():
-    plunger_manager = Plunger_Manager()
+    Plunger_Manager()
     
 
 if __name__ == "__main__":
