@@ -85,13 +85,7 @@ def main():
             
             proc.communicate(
                 bytes(
-                    "/kickall".encode("utf-8")
-                )
-            )
-            sleep(5)
-            proc.communicate(
-                bytes(
-                    "/stop".encode("utf-8")
+                    "stop".encode("utf-8")
                 )
             )
             sleep(5)
