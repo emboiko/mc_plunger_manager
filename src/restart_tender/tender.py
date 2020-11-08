@@ -2,6 +2,10 @@ from subprocess import Popen, PIPE
 from time import sleep
 
 
+# windows task scheduler invokes this script every 12 hours +- 5 minutes
+# todo: make a loop in a different thread so we can use stdin on the server console
+
+
 def main():
         with Popen("WINDOWS.bat", stdin=PIPE) as proc:
             sleep(300)
