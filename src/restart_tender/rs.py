@@ -7,7 +7,7 @@ from time import sleep
 
 
 def main():
-        with Popen("WINDOWS.bat", stdin=PIPE) as proc:
+        with Popen("LaunchServer.bat", stdin=PIPE) as proc:
             sleep(300)
             
             proc.communicate(

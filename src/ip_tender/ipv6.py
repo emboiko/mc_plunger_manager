@@ -1,7 +1,8 @@
 # emboiko
-# 11/7/2020
-# mc_plunger_manager 
-# Keep discord updated with a working hostname for Plunger 1.20 mc server
+# 11/7/2020 - Initial commit(s)
+# 11/19/2020 - Changed modpack to MC_Eternal & directory structure cleanup
+# MC_Eternal_manager 
+# Keep discord updated with a working hostname for MC_Eternal 1.3.7.1
 # automated with windoze task-scheduler
 
 from os import getenv
@@ -12,7 +13,7 @@ from dotenv import load_dotenv
 import asyncio
 
 
-class Plunger_Manager:
+class IPV6_Poll:
 
     def __init__(self):
         self.current_ipv6 = self.get_current_ipv6()
@@ -47,14 +48,14 @@ class Plunger_Manager:
         @client.event
         async def on_ready():
             for channel in client.get_all_channels():
-                if channel.name == "plunger":
+                if channel.name == "MC_Eternal":
                     now = datetime.now()
                     date = now.strftime("%x")
                     time = now.strftime("%X")
 
                     await channel.purge(limit=1)
                     await channel.send(
-                        f"Plunger 1.20 - Hostname updated {date} @ {time}\n"
+                        f"MC_Eternal - Hostname updated {date} @ {time}\n"
                         f"{self.current_ipv6}\n"
                         f"Port is default @ 25565 and can be omitted."
                     )
@@ -65,8 +66,8 @@ class Plunger_Manager:
 
 
 def main():
-    Plunger_Manager()
-    
+    IPV6_Poll()
+
 
 if __name__ == "__main__":
     main()
